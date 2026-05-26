@@ -1,0 +1,366 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+}
+
+html {
+  background: #030712;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(99,102,241,0.04), transparent 22rem),
+    linear-gradient(135deg, #030712 0%, #090d16 50%, #02040a 100%);
+  color: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.20);
+  color: #ffffff;
+}
+
+/* ── Noise overlay ── */
+.noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.10;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+/* ── Custom cursor ── */
+.custom-cursor { display: none; }
+
+@media (pointer: fine) {
+  .custom-cursor { display: block; }
+}
+
+/* ── Glassmorphism — monochrome dark ── */
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* ── Layout ── */
+.section-shell {
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+  width: min(1100px, calc(100% - 32px));
+  padding: 104px 0;
+}
+
+/* ── Gradient text — monochrome ── */
+.gradient-text {
+  background: linear-gradient(90deg, #ffffff 0%, #d4d4d4 40%, #888888 80%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Grid mask ── */
+.grid-mask {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, transparent, black 15%, black 82%, transparent);
+}
+
+/* ── Focus ring ── */
+.focus-ring { outline: none; }
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.40);
+}
+
+/* ── Section divider ── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section-shell {
+    width: min(100% - 24px, 680px);
+    padding: 80px 0;
+  }
+}
+
+
+/* =========================================================================
+   ─── LIGHT THEME REDESIGN — Highly Aesthetic, Clean Premium ───
+   ========================================================================= */
+
+body.light-mode {
+  color-scheme: light;
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(0,0,0,0.035), transparent 22rem),
+    linear-gradient(135deg, #fafafa 0%, #f4f4f5 50%, #ebebeb 100%);
+  color: #18181b;
+}
+
+body.light-mode ::selection {
+  background: rgba(0, 0, 0, 0.08);
+  color: #000000;
+}
+
+/* ── Role pill — dark on light background ── */
+body.light-mode .role-pill {
+  background-color: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff !important;
+}
+
+/* ── Light Mode Selection & Text overrides ── */
+body.light-mode .text-white { color: #000000; }
+body.light-mode .text-white\/86 { color: #050505; }
+body.light-mode .text-white\/82 { color: #050505; }
+body.light-mode .text-white\/80 { color: #050505; }
+body.light-mode .text-white\/78 { color: #111111; }
+body.light-mode .text-white\/72 { color: #111111; }
+body.light-mode .text-white\/70 { color: #111111; }
+body.light-mode .text-white\/68 { color: #111111; }
+body.light-mode .text-white\/66,
+body.light-mode .text-white\/64,
+body.light-mode .text-white\/60,
+body.light-mode .text-white\/58,
+body.light-mode .text-white\/55,
+body.light-mode .text-white\/54 { color: #1c1917; }
+body.light-mode .text-white\/50,
+body.light-mode .text-white\/48,
+body.light-mode .text-white\/46,
+body.light-mode .text-white\/45,
+body.light-mode .text-white\/42,
+body.light-mode .text-white\/38 { color: #27272a; }
+body.light-mode .text-white\/40 { color: #3f3f46; }
+body.light-mode .text-white\/36,
+body.light-mode .text-white\/34,
+body.light-mode .text-white\/32 { color: #3f3f46; }
+body.light-mode .text-white\/28 { color: #52525b; }
+body.light-mode .text-white\/25 { color: #52525b; }
+body.light-mode .text-white\/20 { color: #71717a; }
+body.light-mode .text-white\/15 { color: #71717a; }
+body.light-mode .text-white\/10 { color: #a1a1aa; }
+
+/* ── Light Mode Color Scale Overrides ── */
+body.light-mode .text-mint { color: #4338ca !important; }
+body.light-mode .text-aqua { color: #0369a1 !important; }
+body.light-mode .text-ember { color: #334155 !important; }
+body.light-mode .text-pulse { color: #1e293b !important; }
+
+body.light-mode .bg-mint\/12 { background-color: rgba(79, 70, 229, 0.08) !important; }
+body.light-mode .bg-aqua\/12 { background-color: rgba(2, 132, 199, 0.08) !important; }
+body.light-mode .bg-ember\/12 { background-color: rgba(100, 116, 139, 0.08) !important; }
+body.light-mode .bg-pulse\/12 { background-color: rgba(71, 85, 105, 0.08) !important; }
+
+/* ── Light mode transparent background overrides ── */
+body.light-mode .bg-white\/\[0\.04\] { background-color: rgba(0, 0, 0, 0.04); }
+body.light-mode .bg-white\/\[0\.05\] { background-color: rgba(0, 0, 0, 0.05); }
+body.light-mode .bg-white\/\[0\.06\] { background-color: rgba(0, 0, 0, 0.06); }
+body.light-mode .bg-white\/\[0\.02\] { background-color: rgba(0, 0, 0, 0.02); }
+body.light-mode .bg-white\/\[0\.01\] { background-color: rgba(0, 0, 0, 0.01); }
+body.light-mode .bg-white\/\[0\.03\] { background-color: rgba(0, 0, 0, 0.03); }
+body.light-mode .bg-white\/40 { background-color: rgba(0, 0, 0, 0.25); }
+body.light-mode .bg-white\/5 { background-color: rgba(0, 0, 0, 0.04); }
+body.light-mode .bg-white\/6 { background-color: rgba(0, 0, 0, 0.05); }
+body.light-mode .bg-white\/7 { background-color: rgba(0, 0, 0, 0.06); }
+body.light-mode .bg-white\/8 { background-color: rgba(0, 0, 0, 0.05); }
+body.light-mode .bg-white\/10 { background-color: rgba(0, 0, 0, 0.05); }
+body.light-mode .bg-white\/12 { background-color: rgba(0, 0, 0, 0.06); }
+body.light-mode .bg-white\/15 { background-color: rgba(0, 0, 0, 0.08); }
+body.light-mode .bg-white\/20 { background-color: rgba(0, 0, 0, 0.08); }
+body.light-mode .bg-white\/50 { background-color: rgba(0, 0, 0, 0.25); }
+
+/* ── Light mode borders overrides ── */
+body.light-mode .border-white\/20 { border-color: rgba(0, 0, 0, 0.12); }
+body.light-mode .border-white\/15 { border-color: rgba(0, 0, 0, 0.10); }
+body.light-mode .border-white\/12 { border-color: rgba(0, 0, 0, 0.09); }
+body.light-mode .border-white\/10 { border-color: rgba(0, 0, 0, 0.08); }
+body.light-mode .border-white\/8 { border-color: rgba(0, 0, 0, 0.06); }
+body.light-mode .border-white\/6 { border-color: rgba(0, 0, 0, 0.06); }
+body.light-mode .border-white\/5 { border-color: rgba(0, 0, 0, 0.05); }
+body.light-mode .border-white\/30 { border-color: rgba(0, 0, 0, 0.18); }
+body.light-mode .border-white\/25 { border-color: rgba(0, 0, 0, 0.14); }
+
+/* ── Hover overlays and texts in light mode ── */
+body.light-mode .hover\:bg-white\/8:hover { background-color: rgba(0, 0, 0, 0.06); }
+body.light-mode .hover\:bg-white\/12:hover { background-color: rgba(0, 0, 0, 0.08); }
+body.light-mode .hover\:text-white:hover { color: #09090b; }
+body.light-mode .hover\:border-white\/20:hover { border-color: rgba(0, 0, 0, 0.15); }
+body.light-mode .hover\:border-white\/25:hover { border-color: rgba(0, 0, 0, 0.20); }
+body.light-mode .hover\:border-white\/30:hover { border-color: rgba(0, 0, 0, 0.25); }
+
+/* ── Glassmorphism — Light Mode ── */
+body.light-mode .glass {
+  border-color: rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.01),
+    0 20px 40px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* ── Input controls and forms ── */
+body.light-mode input,
+body.light-mode textarea {
+  color: #18181b;
+}
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: #71717a;
+}
+body.light-mode .shadow-\[0_0_0_3px_rgba\(255\,255\,255\,0\.06\)\] {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ── Footer ── */
+body.light-mode footer {
+  color: #71717a;
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+/* ── Custom Cursor ── */
+body.light-mode .custom-cursor {
+  mix-blend-mode: difference !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ── Focus rings ── */
+body.light-mode .focus-ring:focus-visible {
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ── Glow overrides ── */
+body.light-mode .via-white\/18 {
+  --tw-gradient-to: rgba(0,0,0,0) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(0,0,0,0.06) 50%, var(--tw-gradient-to) !important;
+}
+body.light-mode .via-white\/20 {
+  --tw-gradient-to: rgba(0,0,0,0) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(0,0,0,0.06) 50%, var(--tw-gradient-to) !important;
+}
+
+/* ── Journey Timeline nodes and overrides ── */
+body.light-mode #journey .bg-black {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+body.light-mode #journey .bg-black span {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+body.light-mode #journey .bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.04), transparent) !important;
+}
+body.light-mode #journey .glass:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04) !important;
+}
+
+/* ── Skills Orbits in Light Mode ── */
+body.light-mode #skills .bg-ink\/70 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #18181b !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04) !important;
+}
+body.light-mode #skills .bg-ink\/70 .text-white\/70 {
+  color: rgba(24, 24, 27, 0.7) !important;
+}
+
+/* ── Projects specific overrides ── */
+body.light-mode #projects a.bg-white {
+  background-color: #09090b !important;
+  color: #ffffff !important;
+}
+body.light-mode #projects a.bg-white:hover {
+  background-color: #27272a !important;
+}
+body.light-mode #projects .bg-black\/60 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05) !important;
+}
+body.light-mode #projects .bg-neutral-950 {
+  background-color: #fcfcfc !important;
+}
+body.light-mode #projects .bg-white\/15 {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+body.light-mode #projects .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+body.light-mode #projects .bg-white\/25 {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── Contact specific overrides ── */
+body.light-mode #contact button[type="submit"] {
+  background-color: #09090b !important;
+  color: #ffffff !important;
+}
+body.light-mode #contact button[type="submit"]:hover {
+  background-color: #27272a !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+body.light-mode #contact .bg-white\/50 {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ── Gradient text overrides ── */
+body.light-mode .gradient-text {
+  background: linear-gradient(90deg, #09090b 0%, #27272a 50%, #52525b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ── Grid mask overrides ── */
+body.light-mode .grid-mask {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* ── Section divider overrides ── */
+body.light-mode .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent) !important;
+}
+
+/* ── Navbar Opaque Glass Override ── */
+nav.glass {
+  background: rgba(11, 15, 25, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+body.light-mode nav.glass {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
