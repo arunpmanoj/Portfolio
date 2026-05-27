@@ -46,7 +46,7 @@ export default function Home() {
       <ScrollProgress />
       <CustomCursor />
       <Navbar />
-      <main className="relative min-h-screen overflow-x-clip">
+      <main className="relative min-h-screen overflow-x-hidden">
         <div className="noise" />
         <Hero />
         <About />
@@ -71,14 +71,14 @@ function Hero() {
         <div className="absolute left-[10%] top-[30%] size-[600px] -translate-y-1/2 rounded-full bg-white/[0.025] blur-[120px]" />
       </div>
 
-      <div className="section-shell relative z-10 flex min-h-screen items-center pb-20 pt-24">
-        <div className="max-w-[780px]">
+      <div className="section-shell relative z-10 flex min-h-screen items-center pb-16 pt-20 sm:pb-20 sm:pt-24">
+        <div className="w-full max-w-[780px]">
           {/* Cursive signature — first in */}
           <motion.span
             initial={{ opacity: 0, y: 10, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.8, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-4 block font-cursive text-xl text-white/60 sm:text-2xl"
+            className="mb-3 block font-cursive text-lg text-white/60 sm:text-xl sm:mb-4"
           >
             Hey, it&apos;s me Arun
           </motion.span>
@@ -92,7 +92,7 @@ function Hero() {
               delay: 1.05,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="font-hero text-[3.6rem] font-semibold italic leading-[0.96] tracking-[0.01em] text-white sm:text-7xl lg:text-[5.8rem]"
+            className="font-hero text-[2.6rem] font-semibold italic leading-[0.96] tracking-[0.01em] text-white xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.8rem]"
           >
             Arun P Manoj
           </motion.h1>
@@ -143,7 +143,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 1.65 }}
-            className="mt-7 max-w-xl text-base leading-[1.85] text-white/58 md:text-lg"
+            className="mt-5 max-w-xl text-sm leading-[1.85] text-white/58 sm:text-base sm:mt-7 md:text-lg"
           >
             Creating scalable and modern web experiences driven by innovation,
             performance, and thoughtful design.
@@ -154,7 +154,7 @@ function Hero() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 1.8 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-6 flex flex-wrap gap-2 sm:mt-8 sm:gap-3"
           >
             <MagneticButton href="#projects">
               View Projects
@@ -179,7 +179,7 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 1.95 }}
-            className="mt-8 flex flex-wrap items-center gap-2.5"
+            className="mt-6 flex flex-wrap items-center gap-2 sm:mt-8 sm:gap-2.5"
           >
             {socialLinks.map(({ label, href, icon: Icon }) => (
               <a
@@ -402,9 +402,9 @@ function Skills() {
         </Reveal>
 
         {/* ── Interactive 3D Cards Stack layout ── */}
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] items-center">
+        <div className="grid gap-8 md:gap-12 lg:grid-cols-[0.85fr_1.15fr] items-start lg:items-center">
           {/* Left Column: Premium tab list selectors */}
-          <div className="flex flex-col gap-2 md:gap-3">
+          <div className="flex flex-col gap-2 sm:gap-3">
             {skillGroups.map(({ title, icon: Icon, accent }, idx) => {
               const active = idx === activeSkillCat;
               return (
@@ -441,7 +441,7 @@ function Skills() {
 
           {/* Right Column: 3D Fanned Pile Deck stack */}
           <div
-            className="relative mx-auto w-full max-w-[420px] h-[340px] flex items-center justify-center overflow-visible select-none mt-6 lg:mt-0"
+            className="relative mx-auto w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[420px] h-[280px] sm:h-[310px] md:h-[340px] flex items-center justify-center overflow-visible select-none mt-4 lg:mt-0"
             style={{ perspective: 1000, transformStyle: "preserve-3d" }}
           >
             {skillGroups.map(({ title, icon: Icon, skills, accent }, idx) => {
@@ -482,7 +482,7 @@ function Skills() {
                   className="absolute inset-0 cursor-pointer pointer-events-auto"
                 >
                   {/* Glass Card */}
-                  <div className="glass relative h-full w-full rounded-[26px] p-6 md:p-8 flex flex-col justify-between overflow-hidden border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.3)]">
+                  <div className="glass relative h-full w-full rounded-[20px] sm:rounded-[26px] p-4 sm:p-6 md:p-8 flex flex-col justify-between overflow-hidden border border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.3)]">
                     {/* Tech precision grid mask backdrop */}
                     <div className="absolute inset-0 grid-mask opacity-15 pointer-events-none" />
 
@@ -567,7 +567,7 @@ function Projects() {
 
         {/* ── 3D Circular Rotating Carousel viewport ── */}
         <div
-          className="relative mx-auto w-full max-w-[800px] h-[520px] md:h-[600px] flex items-center justify-center overflow-visible select-none"
+          className="relative mx-auto w-full max-w-[800px] h-[420px] sm:h-[480px] md:h-[560px] flex items-center justify-center overflow-hidden select-none"
           style={{ perspective: 1200, transformStyle: "preserve-3d" }}
         >
           {projects.map((project, i) => {
@@ -580,8 +580,8 @@ function Projects() {
 
             // Responsive horizontal coordinate positioning
             let translateX = 0;
-            if (diff === 1) translateX = isMobile ? 120 : 255;
-            if (diff === -1) translateX = isMobile ? -120 : -255;
+            if (diff === 1) translateX = isMobile ? 100 : 255;
+            if (diff === -1) translateX = isMobile ? -100 : -255;
 
             // 3D rotation, scale, opacity, and z-index offsets
             const scale = active ? 1 : isMobile ? 0.72 : 0.82;
@@ -623,7 +623,7 @@ function Projects() {
                     setActiveIdx(i);
                   }
                 }}
-                className="absolute w-[280px] sm:w-[320px] md:w-[410px] h-[480px] md:h-[540px] cursor-pointer"
+                className="absolute w-[220px] sm:w-[280px] md:w-[380px] h-[370px] sm:h-[430px] md:h-[510px] cursor-pointer"
               >
                 <ProjectCard project={project} index={i} />
               </motion.div>
@@ -632,7 +632,7 @@ function Projects() {
         </div>
 
         {/* ── Navigation & Progress Controls ── */}
-        <div className="mt-8 flex flex-col items-center gap-5 z-20 relative">
+        <div className="mt-4 sm:mt-8 flex flex-col items-center gap-4 sm:gap-5 z-20 relative">
           <div className="flex items-center gap-6">
             <button
               onClick={handlePrev}
@@ -674,7 +674,7 @@ function Projects() {
           whileInView={{ scaleX: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          className="mx-auto mt-24 h-px max-w-xl origin-center bg-gradient-to-r from-transparent via-white/20 to-transparent"
+          className="mx-auto mt-12 sm:mt-16 md:mt-24 h-px max-w-xl origin-center bg-gradient-to-r from-transparent via-white/20 to-transparent"
         />
       </div>
     </section>
@@ -868,7 +868,7 @@ function Contact() {
 
         <div className="relative mx-auto max-w-2xl">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.035] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-[20px] sm:rounded-[32px] border border-white/10 bg-white/[0.035] p-5 sm:p-8 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl">
               <ContactParticles />
               {/* Top glow line */}
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
@@ -942,7 +942,7 @@ function Contact() {
                     onSubmit={handleSubmit}
                     noValidate
                   >
-                    <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
                       <label className="grid gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/46">
                         Name
                         <input
@@ -1017,7 +1017,7 @@ function Contact() {
                             }
                       }
                       whileTap={loading ? {} : { scale: 0.97 }}
-                      className="group relative mt-1 inline-flex min-h-12 items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-white px-8 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="group relative mt-1 w-full inline-flex min-h-12 items-center justify-center gap-2.5 overflow-hidden rounded-2xl bg-white px-8 py-3 text-sm font-semibold text-black transition-all duration-300 hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                     >
                       <motion.span
                         className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"

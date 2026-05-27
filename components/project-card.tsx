@@ -25,7 +25,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article className="glass flex flex-col rounded-[26px] overflow-hidden h-full border border-white/8 w-full select-none bg-black/40">
       {/* ── Floated Screenshot (Apple/Stripe-Style Top half) ── */}
-      <div className="relative shrink-0 overflow-hidden bg-gradient-to-br from-white/[0.02] to-white/[0.005] border-b border-white/8 p-5 flex items-center justify-center aspect-[16/10] w-full">
+      <div className="relative shrink-0 overflow-hidden bg-gradient-to-br from-white/[0.02] to-white/[0.005] border-b border-white/8 p-2 sm:p-5 flex items-center justify-center aspect-[16/10] w-full">
         {/* Floating simulated screen shadow wrapper */}
         <div className="relative w-full h-full rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.35)] border border-white/10 bg-neutral-900/60">
           {project.image ? (
@@ -69,7 +69,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       {/* ── Content Details (Bottom half) ── */}
-      <div className="flex flex-1 flex-col justify-between p-6">
+      <div className="flex flex-1 flex-col justify-between p-3 sm:p-5 md:p-6">
         <div>
           {/* Subtitle & Index Indicator Row */}
           <div className="flex items-center justify-between gap-4 mb-3">
@@ -87,12 +87,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </h3>
 
           {/* Project Description */}
-          <p className="mt-2.5 text-xs leading-relaxed text-white/50">
+          <p className="mt-1.5 sm:mt-2.5 text-[10px] sm:text-xs leading-relaxed text-white/50">
             {project.description}
           </p>
 
           {/* Bulleted Feature Details */}
-          <ul className="mt-4 space-y-2 text-xs text-white/45">
+          <ul className="mt-2 sm:mt-4 space-y-1.5 sm:space-y-2 text-[10px] sm:text-xs text-white/45">
             {project.features.slice(0, 3).map((feature) => (
               <li key={feature} className="flex items-start gap-2.5">
                 <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-white/20" />

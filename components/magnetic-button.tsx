@@ -37,7 +37,7 @@ export function MagneticButton({
         x.set(0);
         y.set(0);
       }}
-      className={`focus-ring group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition duration-300 ${variants[variant]} ${className}`}
+      className={`focus-ring group inline-flex min-h-10 sm:min-h-12 items-center justify-center gap-2 rounded-full border px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm font-semibold transition duration-300 ${variants[variant]} ${className}`}
       {...props}
     >
       {children}
